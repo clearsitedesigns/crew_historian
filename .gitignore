@@ -1,0 +1,5 @@
+src/crew_historian/.env
+.DS_Store
+*.pyc
+src/crew_historian/tools/debug_image_download.py
+src/crew_historian/tools/check_image.py

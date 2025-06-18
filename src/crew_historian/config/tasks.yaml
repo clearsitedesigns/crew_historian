@@ -1,0 +1,57 @@
+search_task:
+  description: >
+    Search for historical visual materials related to: {topic}
+    
+    Create SHORT, focused search queries based on {topic}. For example:
+    - Break down {topic} into key terms and time periods
+    - Add words like "museum", "archive", "photography", "collection"
+    - Try specific artist names or movements if relevant
+    - Use 3-5 word queries maximum
+    
+    Try 2-3 different short search queries to find diverse sources.
+    Look for museum collections, digital archives, and historical photographs.
+  expected_output: >
+    A list of 3-5 historical visual sources found, each with: title, URL, 
+    content type, and brief description. Keep total under 300 words.
+  agent: SearcherAgent
+
+vision_task:
+  description: >
+    Based on the search results for {topic}, provide a description of typical 
+    visual characteristics from this period. DO NOT try to analyze webpage URLs 
+    with the vision tool. Instead, use your knowledge to describe what visual 
+    materials from {topic} would typically show - artistic styles, colors, 
+    techniques, cultural symbols, and visual elements of the era.
+  expected_output: >
+    A concise description (under 200 words) of typical visual characteristics 
+    and artistic elements associated with {topic}, based on historical knowledge 
+    rather than direct image analysis.
+  agent: VisionAgent
+
+history_context_task:
+  description: >
+    Provide historical context for {topic}. Cover the time period, major events, 
+    cultural movements, key figures, and social/political background.
+  expected_output: >
+    A focused historical overview (under 300 words) covering the essential 
+    context and significance of {topic}.
+  agent: HistorianAgent
+
+writeup_task:
+  description: >
+    Synthesize all research about {topic} into a coherent summary. 
+    Combine search findings, visual characteristics, and historical context.
+  expected_output: >
+    A comprehensive research summary (under 400 words) that brings together 
+    all findings about {topic}.
+  agent: WriterAgent
+
+final_visualization_task:
+  description: >
+    Create a visual representation of {topic} that captures the essence of 
+    the research findings. The image should reflect the historical period, 
+    artistic style, and cultural elements discovered.
+  expected_output: >
+    A high-quality image saved locally that authentically represents {topic} 
+    and incorporates the research insights.
+  agent: FinalVisualizationAgent
