@@ -176,20 +176,20 @@ crew-historian/
 ```mermaid
 graph TD
     subgraph "🔎 SearcherAgent: Historical Visual Materials Researcher"
-        search_task["`search_task`: Find background & image URLs"]
+        search_task["search_task: Find background and image URLs"]
     end
     subgraph "👁️ VisionAgent: Visual Content Analyst"
-        image_analysis_task["`image_analysis_task`: Describe visual elements"]
-        vision_task["`vision_task`: Summarize image's contribution"]
+        image_analysis_task["image_analysis_task: Describe visual elements"]
+        vision_task["vision_task: Summarize image's contribution"]
     end
     subgraph "🏛️ HistorianAgent: Historical Context Specialist"
-        history_context_task["`history_context_task`: Provide deeper historical context"]
+        history_context_task["history_context_task: Provide deeper historical context"]
     end
     subgraph "✍️ WriterAgent: Research Synthesis Writer"
-        writeup_task["`writeup_task`: Write a cohesive article"]
+        writeup_task["writeup_task: Write a cohesive article"]
     end
     subgraph "🎨 FinalVisualizationAgent: Research Synthesis Visualizer"
-        final_visualization_task["`final_visualization_task`: Generate a custom visual summary"]
+        final_visualization_task["final_visualization_task: Generate a custom visual summary"]
     end
     
     %% Define the workflow connections
