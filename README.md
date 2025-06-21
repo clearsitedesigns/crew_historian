@@ -15,11 +15,11 @@ CrewHistorian employs a team of specialized AI agents that work together to:
 
 ---
 
-🏗️ Project Architecture
+🏛️ Project Architecture
 
 ### Agents Overview
 
-* **SearcherAgent**: Finds historical visual materials using optimized search queries
+* **SearcherAgent**: Finds historical visual materials using optimized search queries (via SerpAPI)
 * **VisionAgent**: Describes visual characteristics based on historical knowledge
 * **HistorianAgent**: Provides comprehensive historical context and analysis
 * **WriterAgent**: Synthesizes all research into compelling narratives
@@ -27,7 +27,7 @@ CrewHistorian employs a team of specialized AI agents that work together to:
 
 ### Custom Tools
 
-* **ScrapingDogSearchTool**: Web search for historical materials
+* **SerpApiSearchTool** *(new)*: Enhanced web search via SerpAPI (text + image queries)
 * **MistralVisionTool**: Image analysis capabilities
 * **MistralImageCreationTool**: AI-powered image generation
 
@@ -71,14 +71,18 @@ uv install
 cp .env.example .env
 ```
 
-Make sure you add a .env file with your keys to the root.
-
 Edit `.env` and add your API keys:
 
 ```
 MISTRAL_API_KEY=your_mistral_api_key_here
 SCRAPINGDOG_API_KEY=your_scrapingdog_api_key_here
-SERP_API_KEY = your key
+SERPAPI_API_KEY=your_serpapi_key_here
+```
+
+> ✅ **Important**: Make sure your `.env` file is correctly placed in the root directory. When using macOS or Conda environments, and to ensure all environment variables and imports resolve correctly, you may need to run the script like this:
+
+```bash
+PYTHONPATH=src python src/crew_historian/main.py test "The Rise Of The Baroque Movement In Art"
 ```
 
 ---
@@ -87,6 +91,7 @@ SERP_API_KEY = your key
 
 * **Mistral AI**: [Mistral Console](https://mistral.ai)
 * **ScrapingDog**: [ScrapingDog Website](https://www.scrapingdog.com)
+* **SerpAPI**: [SerpAPI Console](https://serpapi.com)
 
 ---
 
@@ -99,7 +104,7 @@ python main.py test "Renaissance art"
 Expected Output:
 
 * Agents being created and assigned tasks
-* Search results found
+* Search results found using SerpAPI
 * Visual and historical analysis completed
 * Final report and visualization created
 
@@ -107,13 +112,7 @@ Expected Output:
 
 📖 How to Use CrewHistorian
 
-
-
 ### Basic Usage
-
-Sometimes in conda on mac I find I have to run
-PYTHONPATH=src python src/crew_historian/main.py test "The Rise Of The Baroque Movement In Art"
-
 
 ```bash
 python main.py run "your historical topic here"
@@ -157,6 +156,7 @@ crew-historian/
 │   │   └── tasks.yaml
 │   ├── tools/
 │   │   ├── scraping_dog_search_tool.py
+│   │   ├── serpapi_search_tool.py
 │   │   ├── mistral_vision_tool.py
 │   │   └── mistral_image_creation_tool.py
 │   ├── crew.py
@@ -170,86 +170,31 @@ crew-historian/
 
 ---
 
-🔧 Customization Guide
-
-### Modifying Agents
-
-Edit `src/crew_historian/config/agents.yaml`:
-
-```yaml
-SearcherAgent:
-  name: "SearcherAgent"
-  role: "Historical Visual Materials Researcher"
-  goal: "Find authentic historical visual materials using short, focused search queries"
-```
-
-### Modifying Tasks
-
-Edit `src/crew_historian/config/tasks.yaml`:
-
-```yaml
-search_task:
-  description: "Find historical images"
-  expected_output: "Image URL"
-  agent: SearcherAgent
-```
-
-### Adding New Tools
-
-```python
-from crewai.tools import BaseTool
-from typing import Type
-from pydantic import BaseModel
-
-class YourCustomTool(BaseTool):
-    name: str = "Tool Name"
-    description: str = "What your tool does"
-    args_schema: Type[BaseModel] = YourInputSchema
-
-    def _run(self, argument: str) -> str:
-        return "Tool output"
-```
-
----
-
 📊 Understanding the Output
 
-1. **Console Output**
-
-   * Real-time progress updates
-   * Agent activities and task results
-
-2. **Log Files**
-
-   * `crew_historian.log`
-   * `mistral_image_tool.log`
-
-3. **Generated Files**
-
-   * Images in `final_visualizations/`
-   * Reports via `print()` or console output
-
-4. **Research Flow**:
+**New Flow Summary:**
 
 ```mermaid
 graph TD
-  A[SearcherAgent: search_task] --> B[VisionAgent: image_analysis_task]
+  A[SearcherAgent: search_task (via SerpAPI)] --> B[VisionAgent: image_analysis_task]
   B --> C[VisionAgent: vision_task]
   C --> D[HistorianAgent: history_context_task]
   D --> E[WriterAgent: writeup_task]
   E --> F[FinalVisualizationAgent: final_visualization_task]
 ```
 
+> ⚠️ Note: The task `image_analysis_task` has been added between `search_task` and `vision_task` to extract and analyze the first image URL.
+
 ---
 
 🛠️ Troubleshooting
 
-| Issue                       | Fix                                       |
-| --------------------------- | ----------------------------------------- |
-| `MISTRAL_API_KEY not found` | Ensure `.env` exists with the correct key |
-| No search results found     | Try a different topic or check your key   |
-| Agent creation failed       | Check Python version and dependencies     |
-| Image generation failed     | Confirm Mistral API has image rights      |
+| Issue                       | Fix                                               |
+| --------------------------- | ------------------------------------------------- |
+| `MISTRAL_API_KEY not found` | Ensure `.env` exists with the correct key         |
+| No search results found     | Validate your SerpAPI key and internet connection |
+| Agent creation failed       | Check Python version and dependencies             |
+| Image generation failed     | Confirm Mistral API has image rights              |
 
 ---
 
@@ -258,42 +203,9 @@ graph TD
 * [CrewAI GitHub](https://github.com/joaomdmoura/crewAI)
 * [Mistral AI](https://mistral.ai/)
 * [ScrapingDog](https://www.scrapingdog.com/)
+* [SerpAPI](https://serpapi.com)
 * [CrewAI Discord](https://discord.gg/crewai)
 
 ---
-
-📝 Example Research Topics
-
-* "Ancient Roman architecture"
-* "1920s Art Deco movement"
-* "Medieval illuminated manuscripts"
-* "Japanese woodblock printing"
-* "American Civil War photography"
-* "Renaissance sculpture techniques"
-* "Egyptian hieroglyphic art"
-* "Pre-Columbian Aztec artifacts"
-
----
-
-🤝 Contributing
-
-* Add new tools
-* Improve agent prompts
-* Enhance workflows
-* Support more historical content types
-
----
-
-📄 License
-
-This project is open source. See `LICENSE` for details.
-
----
-
-Ready to explore history with AI? Start your first research with:
-
-```bash
-python main.py run "your favorite historical topic"
-```
 
 © Preston McCauley 2025 – Agent Con 2025
