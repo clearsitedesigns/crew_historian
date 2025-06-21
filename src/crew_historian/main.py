@@ -9,7 +9,7 @@ def run(topic: str):
     try:
         historian = CrewHistorian()
         crew = historian.crew()
-        crew.kickoff(inputs={"topic": topic})  # ✅ pass as dict
+        crew.kickoff(inputs={"topic": topic})
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 

@@ -1,0 +1,36 @@
+2025-06-20 12:51:15,859 - INFO - Starting final image generation with prompt: Create a high-quality image that authentically represents The Rise Of The Baroque Movement In Art. T...
+2025-06-20 12:51:15,873 - INFO - Creating final image generation agent...
+2025-06-20 12:51:16,140 - INFO - Created agent with ID: ag_068559f941d9741880003663105594a3
+2025-06-20 12:51:16,140 - INFO - Starting final image generation conversation...
+2025-06-20 12:51:24,662 - INFO - Conversation started, parsing response...
+2025-06-20 12:51:24,662 - INFO - Found generated file: {'file_id': '16226f74-5c28-4f40-8e6b-b68310883221', 'file_name': 'image_generated_0', 'file_type': 'png', 'tool': 'image_generation'}
+2025-06-20 12:51:24,662 - INFO - 🔄 Starting download for file ID: 16226f74-5c28-4f40-8e6b-b68310883221
+2025-06-20 12:51:24,662 - INFO - 📡 Downloading via HTTP: https://api.mistral.ai/v1/files/16226f74-5c28-4f40-8e6b-b68310883221/content
+2025-06-20 12:51:25,320 - INFO - 📡 HTTP Response Status: 200
+2025-06-20 12:51:25,321 - INFO - 📡 Response Headers: {'Date': 'Fri, 20 Jun 2025 17:51:25 GMT', 'Content-Type': 'application/octet-stream', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'x-envoy-upstream-service-time': '159', 'access-control-allow-origin': '*', 'x-kong-upstream-latency': '160', 'x-kong-proxy-latency': '4', 'x-kong-request-id': '9b8e1977eeba1c49e7b4497d5429f217', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': '__cf_bm=UEPgqyvgzhZbVAdRam_kTCH5klKyeIXpuTNoeUVp7rw-1750441885-1.0.1.1-.w4PsgXESxqSvf8jnZ.MLYHjVaXC.Qdnh2_8aWneUswu2fCP7J4IKXWwDo9Yw6hUguUphONz0SPaer9ZxRu9zLDOnZUDNBX0IIZwbI09Z8o; path=/; expires=Fri, 20-Jun-25 18:21:25 GMT; domain=.mistral.ai; HttpOnly; Secure; SameSite=None, _cfuvid=q8bO_2cJQDW4glSMYGxb4x0lrRK_Roz4.z2G9M2ac5I-1750441885218-0.0.1.1-604800000; path=/; domain=.mistral.ai; HttpOnly; Secure; SameSite=None', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'Server': 'cloudflare', 'CF-RAY': '952d1d348ea04ff9-DFW', 'alt-svc': 'h3=":443"; ma=86400'}
+2025-06-20 12:51:25,321 - INFO - ✅ Downloaded 170363 bytes via Direct HTTP
+2025-06-20 12:51:25,321 - INFO - 📋 File header: b'\xff\xd8\xff\xe0\x00\x10JFIF'
+2025-06-20 12:51:25,321 - INFO - ✅ Download successful: 170363 bytes
+2025-06-20 12:51:25,326 - INFO - 🎭 Detected JPEG format
+2025-06-20 12:51:25,326 - INFO - ✅ Image saved successfully: final_visualizations/20250620_125125_FINAL_image_generated_0.jpg (170363 bytes)
+2025-06-20 12:51:25,326 - INFO - 🎉 SUCCESS: Image saved to final_visualizations/20250620_125125_FINAL_image_generated_0.jpg
+2025-06-20 12:51:25,326 - WARNING - Could not clean up agent ag_068559f941d9741880003663105594a3: 'MistralAgents' object has no attribute 'delete'
+2025-06-20 12:51:25,326 - INFO - ✅ Final visualization generated and saved successfully: 'image_generated_0' (ID: 16226f74-5c28-4f40-8e6b-b68310883221, saved to: final_visualizations/20250620_125125_FINAL_image_generated_0.jpg, 170363 bytes)
+2025-06-20 13:13:15,598 - INFO - Starting final image generation with prompt: Create a detailed visual summary of the Bayeux Tapestry, featuring battle scenes with soldiers on ho...
+2025-06-20 13:13:15,612 - INFO - Creating final image generation agent...
+2025-06-20 13:13:15,912 - INFO - Created agent with ID: ag_06855a4bbe6d74e18000d9c823c304d1
+2025-06-20 13:13:15,913 - INFO - Starting final image generation conversation...
+2025-06-20 13:13:23,920 - INFO - Conversation started, parsing response...
+2025-06-20 13:13:23,922 - INFO - Found generated file: {'file_id': '9faccacb-0caa-4f2e-939a-e249f90aaff6', 'file_name': 'image_generated_0', 'file_type': 'png', 'tool': 'image_generation'}
+2025-06-20 13:13:23,922 - INFO - 🔄 Starting download for file ID: 9faccacb-0caa-4f2e-939a-e249f90aaff6
+2025-06-20 13:13:23,922 - INFO - 📡 Downloading via HTTP: https://api.mistral.ai/v1/files/9faccacb-0caa-4f2e-939a-e249f90aaff6/content
+2025-06-20 13:13:24,694 - INFO - 📡 HTTP Response Status: 200
+2025-06-20 13:13:24,694 - INFO - 📡 Response Headers: {'Date': 'Fri, 20 Jun 2025 18:13:24 GMT', 'Content-Type': 'application/octet-stream', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'x-envoy-upstream-service-time': '172', 'access-control-allow-origin': '*', 'x-kong-upstream-latency': '173', 'x-kong-proxy-latency': '7', 'x-kong-request-id': '41ea023930013679ef0bb77cf594c029', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': '__cf_bm=IbaIaueTG4LaPgI0vYh_pPteE9ob.AQCGedx0lC8KbQ-1750443204-1.0.1.1-1IdIlfT37WvUb8J6P96jvFQmnykyqWfnig1etaP5cbeyrACN9KxTw2nN0hnokY7JMWWqBz1iSoOIjoDGnwALubHjdG5vkuQmrDV0WtxeHJU; path=/; expires=Fri, 20-Jun-25 18:43:24 GMT; domain=.mistral.ai; HttpOnly; Secure; SameSite=None, _cfuvid=bPzPqzqGXQkD0yvWKT_C_YOHakt03YSmD.x8gFd27ZM-1750443204572-0.0.1.1-604800000; path=/; domain=.mistral.ai; HttpOnly; Secure; SameSite=None', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains', 'Server': 'cloudflare', 'CF-RAY': '952d3d6a2f4e8c58-DFW', 'alt-svc': 'h3=":443"; ma=86400'}
+2025-06-20 13:13:24,694 - INFO - ✅ Downloaded 190242 bytes via Direct HTTP
+2025-06-20 13:13:24,695 - INFO - 📋 File header: b'\xff\xd8\xff\xe0\x00\x10JFIF'
+2025-06-20 13:13:24,695 - INFO - ✅ Download successful: 190242 bytes
+2025-06-20 13:13:24,695 - INFO - 🎭 Detected JPEG format
+2025-06-20 13:13:24,696 - INFO - ✅ Image saved successfully: final_visualizations/20250620_131324_FINAL_image_generated_0.jpg (190242 bytes)
+2025-06-20 13:13:24,696 - INFO - 🎉 SUCCESS: Image saved to final_visualizations/20250620_131324_FINAL_image_generated_0.jpg
+2025-06-20 13:13:24,696 - WARNING - Could not clean up agent ag_06855a4bbe6d74e18000d9c823c304d1: 'MistralAgents' object has no attribute 'delete'
+2025-06-20 13:13:24,696 - INFO - ✅ Final visualization generated and saved successfully: 'image_generated_0' (ID: 9faccacb-0caa-4f2e-939a-e249f90aaff6, saved to: final_visualizations/20250620_131324_FINAL_image_generated_0.jpg, 190242 bytes)

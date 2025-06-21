@@ -1,0 +1,53 @@
+2025-06-20 12:36:26.764 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:36:26.765 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:36:27.130 | INFO     | crew_historian.crew:<module>:35 - Custom tools initialized.
+2025-06-20 12:36:27.130 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 12:36:27.130 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'Describe the Great Wall of China']
+2025-06-20 12:36:27.130 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 12:36:27.135 | INFO     | crew_historian.crew:crew:131 - Constructing the full crew with all agents and tasks.
+2025-06-20 12:37:26.842 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:37:26.842 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:37:27.065 | INFO     | crew_historian.crew:<module>:35 - Custom tools initialized.
+2025-06-20 12:37:27.065 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 12:37:27.065 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'Describe the Great Wall of China']
+2025-06-20 12:37:27.065 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 12:37:27.071 | INFO     | crew_historian.crew:crew:131 - Constructing the full crew with all agents and tasks.
+2025-06-20 12:47:48.672 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:47:48.672 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:48:16.282 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:48:16.282 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:48:58.786 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:48:58.786 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:48:59.000 | INFO     | crew_historian.crew:<module>:35 - Custom tools initialized.
+2025-06-20 12:48:59.000 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 12:48:59.000 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'The Rise Of The Baroque Movement In Art']
+2025-06-20 12:48:59.000 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 12:48:59.005 | INFO     | crew_historian.crew:crew:132 - Constructing the full crew with all agents and tasks.
+2025-06-20 12:50:01.274 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:50:01.274 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:50:01.454 | INFO     | crew_historian.crew:<module>:35 - Custom tools initialized.
+2025-06-20 12:50:01.454 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 12:50:01.454 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'The Rise Of The Baroque Movement In Art']
+2025-06-20 12:50:01.454 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 12:50:01.459 | INFO     | crew_historian.crew:crew:132 - Constructing the full crew with all agents and tasks.
+2025-06-20 12:50:30.665 | INFO     | crew_historian.crew:<module>:12 - Loguru logger initialized.
+2025-06-20 12:50:30.665 | INFO     | crew_historian.crew:<module>:25 - Mistral LLM initialized.
+2025-06-20 12:50:30.864 | INFO     | crew_historian.crew:<module>:35 - Custom tools initialized.
+2025-06-20 12:50:30.864 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 12:50:30.864 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'The Rise Of The Baroque Movement In Art']
+2025-06-20 12:50:30.865 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 12:50:30.869 | INFO     | crew_historian.crew:crew:132 - Constructing the full crew with all agents and tasks.
+2025-06-20 13:08:48.263 | INFO     | crew_historian.crew:<module>:13 - Loguru logger initialized.
+2025-06-20 13:08:48.264 | INFO     | crew_historian.crew:<module>:26 - Mistral LLM initialized.
+2025-06-20 13:08:48.497 | INFO     | crew_historian.crew:<module>:36 - Custom tools initialized.
+2025-06-20 13:08:48.497 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 13:08:48.497 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'The Rise Of The Baroque Movement In Art']
+2025-06-20 13:08:48.497 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 13:08:48.502 | INFO     | crew_historian.crew:crew:155 - Constructing the full crew with all agents and tasks.
+2025-06-20 13:11:49.430 | INFO     | crew_historian.crew:<module>:13 - Loguru logger initialized.
+2025-06-20 13:11:49.430 | INFO     | crew_historian.crew:<module>:26 - Mistral LLM initialized.
+2025-06-20 13:11:49.618 | INFO     | crew_historian.crew:<module>:36 - Custom tools initialized.
+2025-06-20 13:11:49.619 | INFO     | __main__:<module>:5 - === Crew Historian CLI Started ===
+2025-06-20 13:11:49.619 | DEBUG    | __main__:<module>:6 - Command received: ['src/crew_historian/main.py', 'test', 'The Rise Of The Baroque Movement In Art']
+2025-06-20 13:11:49.619 | INFO     | __main__:test:23 - Running test mode...
+2025-06-20 13:11:49.623 | INFO     | crew_historian.crew:crew:155 - Constructing the full crew with all agents and tasks.

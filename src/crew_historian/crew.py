@@ -1,4 +1,5 @@
 import os
+import re
 from dotenv import load_dotenv
 from loguru import logger
 from crewai import Agent, Task, Crew, Process, LLM
@@ -11,12 +12,12 @@ load_dotenv()
 logger.add("crew_historian.log", rotation="1 MB", retention="10 days", level="DEBUG")
 logger.info("Loguru logger initialized.")
 
-# Load API key
+# Load Mistral API key
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 if not MISTRAL_API_KEY:
     raise ValueError("MISTRAL_API_KEY not found in .env")
 
-# Initialize LLM with ONLY valid parameters
+# Initialize Mistral LLM
 llm = LLM(
     model="mistral/mistral-small-latest",
     temperature=0.4,
@@ -24,16 +25,17 @@ llm = LLM(
 )
 logger.info("Mistral LLM initialized.")
 
-# Custom tools
-from crew_historian.tools.scraping_dog_search_tool import ScrapingDogSearchTool
+# === Custom Tools ===
+from crew_historian.tools.serpapi_search_tool import SerpApiSearchTool
 from crew_historian.tools.mistral_image_creation_tool import MistralImageCreationTool
 from crew_historian.tools.mistral_vision_tool import MistralVisionTool
 
-scraping_tool = ScrapingDogSearchTool()
+search_tool = SerpApiSearchTool()
 image_gen_tool = MistralImageCreationTool()
 vision_tool = MistralVisionTool()
 logger.info("Custom tools initialized.")
 
+# === Crew Definition ===
 @CrewBase
 class CrewHistorian:
     agents_config = "config/agents.yaml"
@@ -41,13 +43,15 @@ class CrewHistorian:
 
     def __init__(self):
         self.llm = llm
+        self._search_output = None  # stores raw search result
+        self._image_url = None      # dynamically extracted from search output
 
     @agent
     def SearcherAgent(self) -> Agent:
         return Agent(
             config=self.agents_config["SearcherAgent"],
             llm=self.llm,
-            tools=[scraping_tool],
+            tools=[search_tool],
             verbose=True
         )
 
@@ -89,40 +93,60 @@ class CrewHistorian:
 
     @task
     def search_task(self) -> Task:
+        def save_search_output(result: str):
+            self._search_output = result
+            matches = re.findall(r'https?://[^\s"]+\.(?:jpg|jpeg|png|webp)', result, re.IGNORECASE)
+            if matches:
+                self._image_url = matches[0]
+                logger.info(f"✅ Extracted image URL for vision: {self._image_url}")
+            else:
+                logger.warning("⚠️ No valid image URL found in search output.")
+
         return Task(
-            config=self.tasks_config["search_task"], 
-            agent=self.SearcherAgent()
+            config=self.tasks_config["search_task"],
+            agent=self.SearcherAgent(),
+            output_parser=save_search_output
+        )
+
+    @task
+    def image_analysis_task(self) -> Task:
+        return Task(
+            config=self.tasks_config["image_analysis_task"],
+            agent=self.VisionAgent(),
+            input_key="image_path_or_url",
+            input_value=lambda: self._image_url,
+            dependencies=[self.search_task()]
         )
 
     @task
     def vision_task(self) -> Task:
         return Task(
-            config=self.tasks_config["vision_task"], 
-            agent=self.VisionAgent(), 
-            dependencies=[self.search_task()]
+            config=self.tasks_config["vision_task"],
+            agent=self.VisionAgent(),
+            dependencies=[self.image_analysis_task()]
         )
 
     @task
     def history_context_task(self) -> Task:
         return Task(
-            config=self.tasks_config["history_context_task"], 
-            agent=self.HistorianAgent(), 
+            config=self.tasks_config["history_context_task"],
+            agent=self.HistorianAgent(),
             dependencies=[self.vision_task()]
         )
 
     @task
     def writeup_task(self) -> Task:
         return Task(
-            config=self.tasks_config["writeup_task"], 
-            agent=self.WriterAgent(), 
+            config=self.tasks_config["writeup_task"],
+            agent=self.WriterAgent(),
             dependencies=[self.history_context_task()]
         )
 
     @task
     def final_visualization_task(self) -> Task:
         return Task(
-            config=self.tasks_config["final_visualization_task"], 
-            agent=self.FinalVisualizationAgent(), 
+            config=self.tasks_config["final_visualization_task"],
+            agent=self.FinalVisualizationAgent(),
             dependencies=[self.writeup_task()]
         )
 
@@ -139,6 +163,7 @@ class CrewHistorian:
             ],
             tasks=[
                 self.search_task(),
+                self.image_analysis_task(),
                 self.vision_task(),
                 self.history_context_task(),
                 self.writeup_task(),
