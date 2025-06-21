@@ -180,7 +180,6 @@ graph TD
   C --> D[HistorianAgent: history_context_task]
   D --> E[WriterAgent: writeup_task]
   E --> F[FinalVisualizationAgent: final_visualization_task]
-
 > ⚠️ Note: The task `image_analysis_task` has been added between `search_task` and `vision_task` to extract and analyze the first image URL.
 
 ---
