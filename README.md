@@ -71,11 +71,14 @@ uv install
 cp .env.example .env
 ```
 
+Make sure you add a .env file with your keys to the root.
+
 Edit `.env` and add your API keys:
 
 ```
 MISTRAL_API_KEY=your_mistral_api_key_here
 SCRAPINGDOG_API_KEY=your_scrapingdog_api_key_here
+SERP_API_KEY = your key
 ```
 
 ---
@@ -104,7 +107,13 @@ Expected Output:
 
 📖 How to Use CrewHistorian
 
+
+
 ### Basic Usage
+
+Sometimes in conda on mac I find I have to run
+PYTHONPATH=src python src/crew_historian/main.py test "The Rise Of The Baroque Movement In Art"
+
 
 ```bash
 python main.py run "your historical topic here"
