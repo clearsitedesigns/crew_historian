@@ -173,7 +173,6 @@ crew-historian/
 📊 Understanding the Output
 
 **New Flow Summary:**
-
 graph TD
     %% Style for the Agent subgraphs
     classDef agent fill:#f0f7ff,stroke:#0063a0,stroke-width:2px;
