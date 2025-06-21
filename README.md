@@ -174,14 +174,58 @@ crew-historian/
 
 **New Flow Summary:**
 
-```mermaid
 graph TD
-  A["SearcherAgent: search_task via SerpAPI"] --> B["VisionAgent: image_analysis_task"]
-  B --> C["VisionAgent: vision_task"]
-  C --> D["HistorianAgent: history_context_task"]
-  D --> E["WriterAgent: writeup_task"]
-  E --> F["FinalVisualizationAgent: final_visualization_task"]
----
+    %% Style for the Agent subgraphs
+    classDef agent fill:#f0f7ff,stroke:#0063a0,stroke-width:2px;
+
+    %% Subgraph for the SearcherAgent
+    subgraph "🔎 SearcherAgent: Historical Visual Materials Researcher"
+        direction LR
+        search_task["`search_task`: Find background & image URLs"]
+    end
+
+    %% Subgraph for the VisionAgent
+    subgraph "👁️ VisionAgent: Visual Content Analyst"
+        direction LR
+        image_analysis_task["`image_analysis_task`: Describe visual elements"]
+        vision_task["`vision_task`: Summarize image's contribution"]
+    end
+
+    %% Subgraph for the HistorianAgent
+    subgraph "🏛️ HistorianAgent: Historical Context Specialist"
+        direction LR
+        history_context_task["`history_context_task`: Provide deeper historical context"]
+    end
+
+    %% Subgraph for the WriterAgent
+    subgraph "✍️ WriterAgent: Research Synthesis Writer"
+        direction LR
+        writeup_task["`writeup_task`: Write a cohesive article"]
+    end
+
+    %% Subgraph for the FinalVisualizationAgent
+    subgraph "🎨 FinalVisualizationAgent: Research Synthesis Visualizer"
+        direction LR
+        final_visualization_task["`final_visualization_task`: Generate a custom visual summary"]
+    end
+
+    %% Define the workflow connections between tasks
+    search_task --> image_analysis_task;
+    image_analysis_task --> vision_task;
+
+    %% Historian and Writer use multiple inputs
+    search_task --> history_context_task;
+    vision_task --> history_context_task;
+    history_context_task --> writeup_task;
+    vision_task --> writeup_task;
+
+    %% Final visualization is based on the writeup
+    writeup_task --> final_visualization_task;
+
+    %% Assign class to all subgraphs
+    class search_task,image_analysis_task,vision_task,history_context_task,writeup_task,final_visualization_task agent;
+
+    
 
 🛠️ Troubleshooting
 
