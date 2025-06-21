@@ -173,6 +173,7 @@ crew-historian/
 📊 Understanding the Output
 
 **New Flow Summary:**
+```mermaid
 graph TD
     %% Style for the Agent subgraphs
     classDef agent fill:#f0f7ff,stroke:#0063a0,stroke-width:2px;
@@ -223,7 +224,7 @@ graph TD
 
     %% Assign class to all subgraphs
     class search_task,image_analysis_task,vision_task,history_context_task,writeup_task,final_visualization_task agent;
-
+```
     
 
 🛠️ Troubleshooting
